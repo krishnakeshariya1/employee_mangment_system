@@ -1,9 +1,11 @@
 import { Header } from "../other/Header"
+import { TaskListNumbers } from "../other/TaskLisstNumbers"
 
 export const EmployeeDashboard = () =>{
     return(
-        <div className="px-14 py-4 bg-gray-100">
+        <div className="">
             < Header />
+            <TaskListNumbers />
         </div>
     )
 }
