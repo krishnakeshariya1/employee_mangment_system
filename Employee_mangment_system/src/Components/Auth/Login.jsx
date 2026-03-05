@@ -4,6 +4,8 @@ export const Login = () => {
 
     const submitHandler = (e) => {
         e.preventDefault()
+        setEmail("");
+        setPassword("");
     }
     
     const [email, setEmail] = useState("");
