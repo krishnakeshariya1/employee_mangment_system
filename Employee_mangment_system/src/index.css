@@ -3,3 +3,6 @@
 #taskList::-webkit-scrollbar{
     display: none;
 }
+#allTask::-webkit-scrollbar{
+    display: none;
+}
