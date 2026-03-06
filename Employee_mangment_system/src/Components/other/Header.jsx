@@ -15,7 +15,7 @@ export const Header = () => {
             </h1>
 
             < button
-              className="bg-red-500 px-2.5 py-1.5 rounded font-bold "
+              className="bg-red-500 px-2.5 py-1.5 rounded font-bold text-white "
             >Log out</button>
         </div>
     )
