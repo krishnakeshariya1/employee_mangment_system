@@ -5,9 +5,9 @@ import { EmployeeDashboard } from "./Components/Dashboard/EmployeeDashboard"
 const App =()=>{
   return(
     < div className="w-screen">
-    {/* < Login /> */}
+    < Login />
     {/* < EmployeeDashboard /> */}
-    < AdminDashboard />
+    {/* < AdminDashboard /> */}
     </ div>
   )
 }
