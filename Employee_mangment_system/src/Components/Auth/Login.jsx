@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react"
 
-export const Login = () => {
+export const Login = ({handleLogin}) => {
 
     const submitHandler = (e) => {
-        e.preventDefault()
+        e.preventDefault();
+        handleLogin(email, password);
         setEmail("");
         setPassword("");
     }
