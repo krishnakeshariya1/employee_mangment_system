@@ -8,7 +8,7 @@ export const EmployeeDashboard = ({user}) =>{
         <div className="h-screen">
             < Header  user={user}/>
             <TaskListNumbers user={user} />
-            <TaskList />
+            <TaskList user={user}/>
         </div>
     )
 }

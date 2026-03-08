@@ -10,34 +10,36 @@ const App = () => {
   const [loggedUser, setLoggedUser] = useState(null)
   const authData = useContext(AuthContext);
 
-  // useEffect(() => {
-  //   if (authData) {
-  //     const loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
-  //     console.log(loggedUser)
-  //   }
+  useEffect(() => {
+    const loggedUser = localStorage.getItem("loggedUser")
     
-  // },[authData])
+    
+  })
 
- const handleLogin = (email, password) => {
-  if (authData) {
-    const employee = authData.employees.find((e) => e.email === email && e.password === password);
-    
-    if(employee){
-      setUser("employee");
-      setLoggedUser(employee)
+  const handleLogin = (email, password) => {
+    if (email === 'keshariyakrishna8@gmail.com' && password === "Kk224755") {
+      setUser("admin");
+      localStorage.setItem("loggedUser", JSON.stringify({ role: "admin" }))
     }
-    localStorage.setItem("loggedUser", JSON.stringify({role : "employee"}))
+    else if (authData) {
+      const employee = authData.employees.find((e) => e.email === email && e.password === password);
+
+      if (employee) {
+        setUser("employee");
+        setLoggedUser(employee)
+      }
+      localStorage.setItem("loggedUser", JSON.stringify({ role: "employee" }))
+    }
+    else {
+      alert("Invalide candential")
+    }
   }
-  else {
-    alert("Invalide candential")
-  }
-}
 
   return (
     < div className="w-screen">
       {!user && < Login handleLogin={handleLogin} />}
       {user === "admin" && <AdminDashboard />}
-      {user === "employee" && < EmployeeDashboard user={loggedUser}/>}
+      {user === "employee" && < EmployeeDashboard user={loggedUser} />}
     </ div>
   )
 }
