@@ -1,4 +1,5 @@
-export const TaskListNumbers = () =>{
+export const TaskListNumbers = ({user}) =>{
+    console.log(user)
     return(
         <div className=" w-screen mt-14 flex gap-4 px-4">
             <div className="bg-sky-500 rounded-xl px-14 py-6 w-full">

@@ -1,4 +1,5 @@
-export const Header = () => {
+export const Header = ({user}) => {
+    console.log(user)
     return (
         < div
             className=" flex items-end justify-between bg-gray-200 px-14 py-4 "
@@ -10,7 +11,7 @@ export const Header = () => {
                 < span
                     className="text-3xl font-bold"
                 >
-                    krishna 👋
+                    {user.name} 👋
                 </span>
             </h1>
 
