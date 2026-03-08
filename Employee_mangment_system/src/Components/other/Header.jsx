@@ -1,5 +1,4 @@
-export const Header = ({user}) => {
-    console.log(user)
+export const Header = ({user, logOutFnc}) => {
     return (
         < div
             className=" flex items-end justify-between bg-gray-200 px-14 py-4 "
@@ -17,6 +16,9 @@ export const Header = ({user}) => {
 
             < button
               className="bg-red-500 px-2.5 py-1.5 rounded font-bold text-white "
+              onClick={()=>{
+                logOutFnc()
+              }}
             >Log out</button>
         </div>
     )

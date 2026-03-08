@@ -254,7 +254,8 @@ const Admin_Data = [
     {
         "id" : "AD1",
         "email" : "keshariyakrishna8@gmail.com",
-        "password" : "Kk224755"
+        "password" : "Kk224755",
+        "name" : "krishna keshariya "
     }
 ]
 

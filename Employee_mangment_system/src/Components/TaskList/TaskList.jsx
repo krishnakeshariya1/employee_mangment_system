@@ -10,11 +10,11 @@ export const TaskList = ({ user }) => {
 
                 if(task.active) return  < AcceptTask task={task} key={idx}/>
                 
-                if(task.newTask) return < NewTask key={idx}/>
+                if(task.newTask) return < NewTask key={idx} task={task}/>
 
-                if(task.completed) return < CompletedTask key={idx}/>
+                if(task.completed) return < CompletedTask key={idx} task={task}/>
 
-                if(task.failed) return < FailedTask key={idx}/>
+                if(task.failed) return < FailedTask key={idx} task={task}/>
             })}
         </div>
     )
