@@ -7,7 +7,7 @@ export const CompletedTask = ({task}) => {
             </div>
             <div>
                 <h2 className="mt-6 font-semibold text-xl">{task.taskTitle}</h2>
-                <p className="text-sm mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni suscipit exercitationem quae explicabo quia?</p>
+                <p className="text-sm mt-2">{task.taskDescription}</p>
             </div>
             <div className="mt-5 text-center">
                 <button className=" w-full bg-green-500 rounded font-semibold px-2 py-1">Completed</button>

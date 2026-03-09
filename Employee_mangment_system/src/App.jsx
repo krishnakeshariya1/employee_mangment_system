@@ -23,8 +23,8 @@ const App = () => {
   const handleLogin = (email, password) => {
     if (email === 'keshariyakrishna8@gmail.com' && password === "224755") {
       setUser("admin");
-      console.log("cja rha hai ");
-      localStorage.setItem("loggedUser", JSON.stringify({ role: "admin" }))
+      setLoggedUser(authData.admin[0]);
+      localStorage.setItem("loggedUser", JSON.stringify({ role: "admin",  data : authData.admin }))
     }
     else if (authData) {
       const employee = authData.employees.find((e) => e.email === email && e.password === password);
@@ -48,7 +48,7 @@ const App = () => {
   return (
     < div className="w-screen">
       {!user && < Login handleLogin={handleLogin} />}
-      {user === "admin" && <AdminDashboard  />}
+      {user === "admin" && <AdminDashboard user={loggedUser} logOutFnc={logOutFnc} />}
       {user === "employee" && < EmployeeDashboard user={loggedUser} logOutFnc={logOutFnc} />}
     </ div>
   )
