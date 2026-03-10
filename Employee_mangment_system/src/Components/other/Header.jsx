@@ -1,5 +1,4 @@
 export const Header = ({user, logOutFnc }) => {
-    console.log(user)
     return (
         < div
             className=" flex items-end justify-between bg-gray-200 px-14 py-4 "

@@ -8,7 +8,7 @@ const App = () => {
 
   const [user, setUser] = useState(null);
   const [loggedUser, setLoggedUser] = useState(null)
-  const authData = useContext(AuthContext);
+  const [authData, setAuthData] = useContext(AuthContext);
 
   useEffect(() => {
     const loggedUser = localStorage.getItem("loggedUser")
@@ -29,7 +29,7 @@ const App = () => {
 
   // Admin check
   const admin = authData.admin.find(
-    (e) => e.mail === email && e.password === password
+    (e) => e.email === email && password == e.password
   );
 
   if (admin) {
