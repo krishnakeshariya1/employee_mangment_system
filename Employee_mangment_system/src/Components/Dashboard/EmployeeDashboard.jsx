@@ -5,7 +5,7 @@ import { TaskList } from "../TaskList/TaskList"
 export const EmployeeDashboard = ({user, logOutFnc}) =>{
     return(
         <div className="h-screen">
-            < Header  user={user} logOutFnc={logOutFnc}/>
+            < Header  user={user} logOutFnc={logOutFnc} />
             <TaskListNumbers user={user} />
             <TaskList user={user}/>
         </div>

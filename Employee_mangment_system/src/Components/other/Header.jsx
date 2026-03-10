@@ -1,4 +1,4 @@
-export const Header = ({user, logOutFnc}) => {
+export const Header = ({user, logOutFnc }) => {
     console.log(user)
     return (
         < div
@@ -11,7 +11,7 @@ export const Header = ({user, logOutFnc}) => {
                 < span
                     className="text-3xl font-bold"
                 >
-                    {user.name} 👋
+                    { user?.name || "User" } 👋
                 </span>
             </h1>
 
