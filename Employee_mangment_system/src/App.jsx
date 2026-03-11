@@ -3,12 +3,14 @@ import { Login } from "./Components/Auth/Login"
 import { AdminDashboard } from "./Components/Dashboard/AdminDashboard"
 import { EmployeeDashboard } from "./Components/Dashboard/EmployeeDashboard"
 import { AuthContext } from "./Context/AuthProvider"
+import { AdminContext } from "./Context/AdminProvider"
 
 const App = () => {
 
   const [user, setUser] = useState(null);
   const [loggedUser, setLoggedUser] = useState(null)
   const [authData, setAuthData] = useContext(AuthContext);
+  const admin = useContext(AdminContext);
 
   useEffect(() => {
     const loggedUser = localStorage.getItem("loggedUser")
@@ -23,49 +25,41 @@ const App = () => {
     }
   }, [])
 
- const handleLogin = (email, password) => {
+  const handleLogin = (email, password) => {
+  
+    const ad = admin.find((e)=>{
+      return e.email === email && password === e.password;
+    })
 
-  if (!authData) return;
-
-  // Admin check
-  const admin = authData.admin.find(
-    (e) => e.email === email && password == e.password
-  );
-
-  if (admin) {
+  if(ad){
     setUser("admin");
-    setLoggedUser(admin);
-
+    setLoggedUser(ad);
     localStorage.setItem(
       "loggedUser",
-      JSON.stringify({ role: "admin", data: admin })
+      JSON.stringify({ role: "admin", data: ad })
     );
-
     return;
   }
 
-  // Employee check
-  const employee = authData.employees.find(
-    (e) => e.email === email && e.password === password
+  const employee = authData?.find(e =>
+    e.email === email && e.password === password
   );
 
-  if (employee) {
+  if(employee){
     setUser("employee");
     setLoggedUser(employee);
-
     localStorage.setItem(
       "loggedUser",
       JSON.stringify({ role: "employee", data: employee })
     );
-
     return;
   }
 
-  alert("Invalid user");
+  alert("Invalid credentials");
 };
 
   const logOutFnc = () => {
-    localStorage.setItem("loggedUser", '')
+    localStorage.removeItem("loggedUser")
     setUser("")
   }
 
