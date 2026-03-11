@@ -1,8 +1,15 @@
-import { useContext } from "react"
-import { AuthContext } from "../../Context/AuthProvider"
+import { useEffect, useState } from "react"
+import { getLocalStorage } from "../../Ulits/localStorage"
 
 export const AllTask = () => {
-    const [data, setData] = useContext(AuthContext)
+  const [data, setData] = useState([])
+
+  useEffect(() => {
+    // getLocalStorage returns { employees, admin }
+    // we only care about the employee list here
+    const { employees } = getLocalStorage();
+    setData(employees || []);
+  }, []);
 
     return (
       <div className="bg-gray-200 px-5 mt-10 h-72 overflow-y-auto flex flex-col gap-2 font-semibold hide-scrollbar">
