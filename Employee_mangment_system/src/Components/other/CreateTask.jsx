@@ -23,15 +23,22 @@ export const CreateTask = () => {
         "taskDate": date,
         "taskCategory": catg}
 
-        const userData = data;
-        userData.forEach((emp)=>{
+        const userData = data.map((emp)=>{
             if(emp.name.toLowerCase().trim() === assign.toLowerCase().trim()){
-                emp.tasks.push(newTask)
-                emp.taskNumbers.active = emp.taskNumbers.active +1;
+                return {
+                    ... emp,
+                    tasks : [...emp.tasks, newTask],
+                    taskNumbers : {
+                        ...emp.taskNumbers,
+                        active : emp.taskNumbers.active +1,
+                        newTask : emp.taskNumbers.newTask + 1
+                    }
+                }
             }
+            return emp
         })
         
-        setData(data);
+        setData(userData);
 
         setTitle("");
         setAssign("");
@@ -39,7 +46,7 @@ export const CreateTask = () => {
         setDate("");
         setDesc("");
 
-        console.log(data)
+        console.log(JSON.parse(localStorage.getItem("employees")));
     }
 
     return (

@@ -5,14 +5,18 @@ export const AuthContext = createContext()
 
 export const AuthProvider = ({children}) =>{
 
-    const [data, setData] = useState(null)
 
-    
-    useEffect(()=>{
-        setLocalStorage()
+    const [data, setData] = useState(() => {
+        if(!localStorage.getItem("employees")){
+            setLocalStorage()
+        }
         const {employees} = getLocalStorage();
-        setData(employees)
-    },[])
+        return employees;
+    },[]);
+
+    useEffect(() => {
+        setLocalStorage({ employees: data });
+    }, [data]);
 
     return(
         <div>

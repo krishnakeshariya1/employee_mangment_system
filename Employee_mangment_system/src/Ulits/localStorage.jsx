@@ -259,9 +259,18 @@ const Admin_Data = [
     }
 ]
 
-export const setLocalStorage = () =>{
-    localStorage.setItem("employees", JSON.stringify(Employees_Data));
-    localStorage.setItem("admin", JSON.stringify(Admin_Data));
+export const setLocalStorage = (data) => {
+    if (data && data.employees) {
+        localStorage.setItem("employees", JSON.stringify(data.employees));
+    }
+    if (data && data.admin) {
+        localStorage.setItem("admin", JSON.stringify(data.admin));
+    }
+    // If no data provided, set initial values
+    if (!data) {
+        localStorage.setItem("employees", JSON.stringify(Employees_Data));
+        localStorage.setItem("admin", JSON.stringify(Admin_Data));
+    }
 }
 
 
